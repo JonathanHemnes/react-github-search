@@ -28,7 +28,7 @@ export default class Github extends Component {
     }
 
     getRepositories = () => {
-        this.setState({loading: true})
+        this.setState({ loading: true })
         this._githubSearch.query(this.state.value).then(data => {
             this.setState({ results: data.items, loading: false })
         }).catch(error => {
@@ -45,7 +45,7 @@ export default class Github extends Component {
             displayResult = <div>
                 {this.state.results.map(repo => <Repository key={repo.id} repo={repo} />)}
             </div>
-        } else if(this.state.loading) {
+        } else if (this.state.loading) {
             displayResult = <h1>Loading...</h1>
         }
 
@@ -56,11 +56,10 @@ export default class Github extends Component {
                         Name:
           <input type="text" value={this.state.value} onChange={this.handleChange} />
                     </label>
-                    <input type="submit" value="Submit" disabled={!this.state.value}/>
+                    <input type="submit" value="Submit" disabled={!this.state.value} />
                 </form>
                 {displayResult}
             </div>
         )
-
     }
 }
