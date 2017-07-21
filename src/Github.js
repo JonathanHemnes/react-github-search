@@ -19,7 +19,13 @@ export default class Github extends Component {
     }
 
     handleChange = (event) => {
-        this.setState({ value: event.target.value });
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
     }
 
     handleSubmit = (event) => {
@@ -29,7 +35,7 @@ export default class Github extends Component {
 
     getRepositories = () => {
         this.setState({ loading: true })
-        this._githubSearch.query(this.state.value).then(data => {
+        this._githubSearch.query(this.state.term, this.state.sort, this.state.order).then(data => {
             this.setState({ results: data.items, loading: false })
         }).catch(error => {
             this.setState({ error: error.message, loading: false })
@@ -49,14 +55,30 @@ export default class Github extends Component {
             displayResult = <h1>Loading...</h1>
         }
 
+        const sortValues = ['stars', 'forks', 'updated'];
+        const sortOptions = sortValues.map((value, i) => {
+            return <option key={i} value={value}>{value}</option>
+        })
+
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <input type="text" name="term" onChange={this.handleChange} />
                     </label>
-                    <input type="submit" value="Submit" disabled={!this.state.value} />
+                    <label>Sort:
+                        <select name="sort" onChange={this.handleChange}>
+                            {sortOptions}
+                        </select>
+                    </label>
+                    <label>Direction:
+                        <select name="order" onChange={this.handleChange}>
+                            <option value="asc">asc</option>
+                            <option value="desc">desc</option>
+                        </select>
+                    </label>
+                    <input type="submit" value="Submit" disabled={!this.state.term} />
                 </form>
                 {displayResult}
             </div>
