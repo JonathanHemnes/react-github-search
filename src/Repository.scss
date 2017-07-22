@@ -5,10 +5,11 @@
     padding: 15px;
     border: 1px solid black;
 
-    > {
+    >div {
         display: flex;
         flex-direction: column;
-        justify-content: space-between
+        align-items: center;
+        justify-content: center;
     }
     
     img {

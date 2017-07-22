@@ -15,7 +15,9 @@ export default class Repository extends Component {
                     <h3>Forks: {this.props.repo.forks}</h3>
                     <h3>Open Issues: {this.props.repo.open_issues}</h3>
                 </div>
-                <img src={this.props.repo.owner.avatar_url} alt="" />
+                <div>
+                    <img src={this.props.repo.owner.avatar_url} alt="" />
+                </div>
             </div>
         )
     }
