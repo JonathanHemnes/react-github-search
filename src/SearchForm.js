@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './SearchForm.scss';
 
 export default class SearchForm extends Component {
 
@@ -10,13 +11,13 @@ export default class SearchForm extends Component {
         })
 
         return (
-            <div>
+            <div className="search-form">
                 <form onSubmit={this.props.handleSubmit}>
                     <label>
-                        Name:
+                        Search Term:
           <input type="text" name="term" onChange={this.props.handleChange} />
                     </label>
-                    <label>Sort:
+                    <label>Sort By:
                         <select name="sort" onChange={this.props.handleChange}>
                             {sortOptions}
                         </select>
@@ -27,7 +28,7 @@ export default class SearchForm extends Component {
                             <option value="desc">desc</option>
                         </select>
                     </label>
-                    <input type="submit" value="Submit" disabled={!this.props.canSubmit} />
+                    <button type="submit"disabled={!this.props.canSubmit}>Submit</button>
                 </form>
             </div>
         )
