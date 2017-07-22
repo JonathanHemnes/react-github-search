@@ -9,7 +9,9 @@ export default class Github extends Component {
         this.state = {
             error: null,
             results: [],
-            value: '',
+            term: '',
+            sort: 'stars',
+            order: 'asc',
             loading: false
         }
         this._githubSearch = new GithubSearch();
