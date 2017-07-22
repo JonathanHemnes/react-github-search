@@ -1,19 +1,13 @@
 .App {
-    margin-top: 10%;
     text-align: center;
- 
-    input, select {
-        display: block;
-        margin: 0;
-        width: 100%;
-        font-family: sans-serif;
-        font-size: 18px;
-        appearance: none;
-        box-shadow: none;
-        border-radius: none;
-    }
- 
-    input:focus {
-        outline: none;
+
+    .banner {
+        margin-top: -20px;
+        padding: 5px;
+        margin-bottom: 15px;
+        background: salmon;
+        h1 {
+            font-size: 48px;
+        }
     }
 }

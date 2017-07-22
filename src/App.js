@@ -7,7 +7,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Search for things on github bro</h1>
+        <div className="banner">
+          <h1>Search for projects on github</h1>
+        </div>
         <Github />
       </div>
     );
