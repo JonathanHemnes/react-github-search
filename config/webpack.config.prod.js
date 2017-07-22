@@ -143,6 +143,7 @@ module.exports = {
           /\.gif$/,
           /\.jpe?g$/,
           /\.png$/,
+          /\.scss$/,
         ],
         loader: require.resolve('file-loader'),
         options: {
@@ -158,6 +159,10 @@ module.exports = {
           limit: 10000,
           name: 'static/media/[name].[hash:8].[ext]',
         },
+      },{
+        test: /\.scss$/,
+        include: paths.appSrc,
+        loaders: [require.resolve("style-loader"), require.resolve("css-loader"), require.resolve("sass-loader")]
       },
       // Process JS with Babel.
       {
