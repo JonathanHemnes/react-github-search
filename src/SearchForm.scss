@@ -4,16 +4,28 @@
         margin-right: 20%;
         display: flex;
         justify-content: space-between;
-        
         button {
             margin: 0 10px 0 0;
             padding: 15px 45px;
             appearance: none;
             box-shadow: none;
+            font-size: 20px;
             border-radius: 0;
-
+            color: #6496c8;
+            background: rgba(0, 0, 0, 0);
+            border: solid 5px #6496c8;
             &:focus {
                 outline: none;
+            }
+            &:hover,
+            &.hover {
+                border-color: #346392;
+                color: #346392;
+            }
+            &:active,
+            &.active {
+                border-color: #27496d;
+                color: #27496d;
             }
         }
     }
