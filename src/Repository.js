@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Repository.css';
+import './Repository.scss';
 
 export default class Repository extends Component {
 
