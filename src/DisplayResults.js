@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Repository from './Repository';
+import ErrorMessage from './ErrorMessage.js';
+import RepositoryList from './RepositoryList.js'
+import Loading from './Loading.js';
 
 export default class DisplayResults extends Component {
 
@@ -7,13 +9,11 @@ export default class DisplayResults extends Component {
         let displayResult;
 
         if (this.props.error) {
-            displayResult = <h1>Severe Failure Has Ocurred! {this.props.error}</h1>
+            displayResult = <ErrorMessage error={this.props.error} />
         } else if (this.props.result && this.props.result.length && !this.props.loading) {
-            displayResult = <div>
-                {this.props.result.map(repo => <Repository key={repo.id} repo={repo} />)}
-            </div>
+            displayResult = <RepositoryList repositories={this.props.result} />
         } else if (this.props.loading) {
-            displayResult = <h1>Loading...</h1>
+            displayResult = <Loading />
         }
         return (
             <div>
