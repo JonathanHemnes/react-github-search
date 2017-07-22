@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Repository from './Repository';
+import SearchForm from './SearchForm.js'
 import GithubSearch from './services/githubSearch.js';
 
 export default class Github extends Component {
@@ -55,31 +56,9 @@ export default class Github extends Component {
             displayResult = <h1>Loading...</h1>
         }
 
-        const sortValues = ['stars', 'forks', 'updated'];
-        const sortOptions = sortValues.map((value, i) => {
-            return <option key={i} value={value}>{value}</option>
-        })
-
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Name:
-          <input type="text" name="term" onChange={this.handleChange} />
-                    </label>
-                    <label>Sort:
-                        <select name="sort" onChange={this.handleChange}>
-                            {sortOptions}
-                        </select>
-                    </label>
-                    <label>Direction:
-                        <select name="order" onChange={this.handleChange}>
-                            <option value="asc">asc</option>
-                            <option value="desc">desc</option>
-                        </select>
-                    </label>
-                    <input type="submit" value="Submit" disabled={!this.state.term} />
-                </form>
+                <SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} canSubmit={this.state.term} />
                 {displayResult}
             </div>
         )
